@@ -1,7 +1,6 @@
 import 'screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:aprender_brincando/screens/animal_screen.dart';
-import 'package:aprender_brincando/screens/animals_screen.dart';
 
 void main() {
   runApp(const MeuAplicativo());

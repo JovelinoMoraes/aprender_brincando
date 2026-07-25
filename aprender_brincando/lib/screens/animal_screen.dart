@@ -17,8 +17,9 @@ class _AnimalScreenState extends State<AnimalScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(animais[indiceAtual].nome),
+            Image.asset(animais[indiceAtual].imagem),
             const SizedBox(height: 30),
+            Text(animais[indiceAtual].nome),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -32,6 +33,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                       : null,
                   child: const Text('◀  Anterior'),
                 ),
+                SizedBox(width: 30),
                 ElevatedButton(
                   onPressed: indiceAtual < (animais.length - 1)
                       ? () {

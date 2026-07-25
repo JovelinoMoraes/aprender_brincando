@@ -17,7 +17,6 @@ class HomeScreen extends StatelessWidget {
           icone: Icons.pets,
           onPressed: () {
             Navigator.pushNamed(context, '/animals');
-            ;
           },
         ),
       ),
