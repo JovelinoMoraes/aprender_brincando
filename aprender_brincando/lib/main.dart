@@ -1,5 +1,6 @@
 import 'screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:aprender_brincando/screens/animal_screen.dart';
 import 'package:aprender_brincando/screens/animals_screen.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MeuAplicativo extends StatelessWidget {
 
       routes: {
         '/': (context) => const HomeScreen(),
-        '/animals': (context) => const AnimalsScreen(),
+        '/animals': (context) => const AnimalScreen(),
       },
     );
   }

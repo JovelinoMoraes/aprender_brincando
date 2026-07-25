@@ -12,16 +12,41 @@ class _AnimalScreenState extends State<AnimalScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(
-      child: Column(
-        children: [
-          Text(animais[indiceAtual].nome),
-          Row(children: [
-            ElevatedButton(onPressed: (){}, child:Text('Anterior')),
-            ElevatedButton(onPressed: (){}, child:Text('Próximo')),
-          ],)
-        ],
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(animais[indiceAtual].nome),
+            const SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: indiceAtual > 0
+                      ? () {
+                          setState(() {
+                            indiceAtual--;
+                          });
+                        }
+                      : null,
+                  child: const Text('◀  Anterior'),
+                ),
+                ElevatedButton(
+                  onPressed: indiceAtual < (animais.length - 1)
+                      ? () {
+                          setState(() {
+                            indiceAtual++;
+                          });
+                        }
+                      : null,
+                  child: const Text('Próximo  ▶'),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }
