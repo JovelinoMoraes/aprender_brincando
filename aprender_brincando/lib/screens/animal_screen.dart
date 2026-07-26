@@ -12,18 +12,48 @@ class _AnimalScreenState extends State<AnimalScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final animalAtual = animais[indiceAtual];
     return Scaffold(
+      backgroundColor: Colors.pink[200],
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(animais[indiceAtual].imagem),
+            Image.asset(
+              animalAtual.imagem,
+              width: 350,
+              height: 350,
+              fit: BoxFit.contain,
+            ), // imagem do animal
             const SizedBox(height: 30),
-            Text(animais[indiceAtual].nome),
+            SizedBox(
+              width: 300,
+              child: FittedBox(
+                child: Text(
+                  animalAtual.nome, // nome do animal
+                  style: TextStyle(
+                    // estilização do nome do animal
+                    fontSize: 60,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      const Shadow(offset: Offset(-1, -1), color: Colors.black),
+                      const Shadow(offset: Offset(1, -1), color: Colors.black),
+                      const Shadow(offset: Offset(1, 1), color: Colors.black),
+                      const Shadow(offset: Offset(-1, 1), color: Colors.black),
+                    ],
+                  ),
+                ),
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
+                  // botão anterior
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                  ),
                   onPressed: indiceAtual > 0
                       ? () {
                           setState(() {
@@ -31,10 +61,17 @@ class _AnimalScreenState extends State<AnimalScreen> {
                           });
                         }
                       : null,
-                  child: const Text('◀  Anterior'),
+                  child: const Text(
+                    '◀', // icone botão anterior
+                    style: TextStyle(fontSize: 35, color: Colors.pink),
+                  ),
                 ),
-                SizedBox(width: 30),
+                const SizedBox(width: 30),
                 ElevatedButton(
+                  // botão proximo
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                  ),
                   onPressed: indiceAtual < (animais.length - 1)
                       ? () {
                           setState(() {
@@ -42,7 +79,10 @@ class _AnimalScreenState extends State<AnimalScreen> {
                           });
                         }
                       : null,
-                  child: const Text('Próximo  ▶'),
+                  child: const Text(
+                    '▶', // icone botao proximo
+                    style: TextStyle(fontSize: 35, color: Colors.pink),
+                  ),
                 ),
               ],
             ),

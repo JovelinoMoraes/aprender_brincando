@@ -18,7 +18,7 @@ class MeuAplicativo extends StatelessWidget {
       initialRoute: '/',
 
       routes: {
-        '/': (context) => const HomeScreen(),
+        '/': (context) => const AnimalScreen(),
         '/animals': (context) => const AnimalScreen(),
       },
     );
