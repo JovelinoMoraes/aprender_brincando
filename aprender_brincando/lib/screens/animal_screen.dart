@@ -19,15 +19,19 @@ class _AnimalScreenState extends State<AnimalScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              animalAtual.imagem,
-              width: 350,
-              height: 350,
-              fit: BoxFit.contain,
-            ), // imagem do animal
-            const SizedBox(height: 30),
             SizedBox(
-              width: 300,
+              width: 500,
+              child: Image.asset(
+                animalAtual.imagem,
+                width: 350,
+                height: 350,
+                fit: BoxFit.contain,
+              ),
+            ), // imagem do animal
+
+            SizedBox(
+              width: 400,
+              height: 100,
               child: FittedBox(
                 child: Text(
                   animalAtual.nome, // nome do animal
@@ -47,7 +51,8 @@ class _AnimalScreenState extends State<AnimalScreen> {
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 ElevatedButton(
                   // botão anterior
@@ -66,7 +71,18 @@ class _AnimalScreenState extends State<AnimalScreen> {
                     style: TextStyle(fontSize: 35, color: Colors.pink),
                   ),
                 ),
-                const SizedBox(width: 30),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                  ),
+                  onPressed: () {
+                    print('som do animal clicado');
+                  },
+                  child: const Text(
+                    '🔊',
+                    style: TextStyle(fontSize: 35, color: Colors.pink),
+                  ),
+                ), // botao de play audio
                 ElevatedButton(
                   // botão proximo
                   style: ElevatedButton.styleFrom(
