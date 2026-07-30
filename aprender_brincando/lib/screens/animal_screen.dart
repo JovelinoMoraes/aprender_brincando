@@ -1,5 +1,6 @@
 import '../data/animals_data.dart';
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class AnimalScreen extends StatefulWidget {
   const AnimalScreen({super.key});
@@ -9,6 +10,13 @@ class AnimalScreen extends StatefulWidget {
 
 class _AnimalScreenState extends State<AnimalScreen> {
   int indiceAtual = 0;
+  final AudioPlayer player = AudioPlayer(); // player de audio dos animais
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +43,16 @@ class _AnimalScreenState extends State<AnimalScreen> {
               child: FittedBox(
                 child: Text(
                   animalAtual.nome, // nome do animal
-                  style: TextStyle(
+                  style: const TextStyle(
                     // estilização do nome do animal
                     fontSize: 60,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     shadows: [
-                      const Shadow(offset: Offset(-1, -1), color: Colors.black),
-                      const Shadow(offset: Offset(1, -1), color: Colors.black),
-                      const Shadow(offset: Offset(1, 1), color: Colors.black),
-                      const Shadow(offset: Offset(-1, 1), color: Colors.black),
+                      Shadow(offset: Offset(-1, -1), color: Colors.black),
+                      Shadow(offset: Offset(1, -1), color: Colors.black),
+                      Shadow(offset: Offset(1, 1), color: Colors.black),
+                      Shadow(offset: Offset(-1, 1), color: Colors.black),
                     ],
                   ),
                 ),
@@ -72,14 +80,17 @@ class _AnimalScreenState extends State<AnimalScreen> {
                   ),
                 ),
                 ElevatedButton(
+                  /// botão do som do animal
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                   ),
                   onPressed: () {
-                    print('som do animal clicado');
+                    player.play(
+                      AssetSource(animalAtual.som),
+                    ); // ao clicar no botão a bliblitoca executa o audio
                   },
                   child: const Text(
-                    '🔊',
+                    '🔊', // icone do botão do som
                     style: TextStyle(fontSize: 35, color: Colors.pink),
                   ),
                 ), // botao de play audio
