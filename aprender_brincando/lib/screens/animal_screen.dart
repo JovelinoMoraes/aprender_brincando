@@ -23,22 +23,46 @@ class _AnimalScreenState extends State<AnimalScreen> {
     final animalAtual = animais[indiceAtual];
     return Scaffold(
       backgroundColor: Colors.pink[200],
+
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.pink[300],
+                shape: BoxShape.circle,
+                boxShadow: [
+                  const BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 4,
+                    offset: Offset(0, 4),
+                  ),
+                ],
+              ),
+
               width: 500,
               child: Image.asset(
                 animalAtual.imagem,
-                width: 350,
-                height: 350,
+                width: 1000,
+                height: 400,
                 fit: BoxFit.contain,
               ),
             ), // imagem do animal
 
-            SizedBox(
-              width: 400,
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.pink[200],
+                borderRadius: BorderRadius.all(Radius.circular(50)),
+                boxShadow: [
+                  const BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 8,
+                    offset: Offset(0, 4),
+                  ),
+                ],
+              ),
+              width: 350,
               height: 100,
               child: FittedBox(
                 child: Text(
@@ -58,9 +82,10 @@ class _AnimalScreenState extends State<AnimalScreen> {
                 ),
               ),
             ),
+            SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.end,
+
               children: [
                 Container(
                   //BOTAO ANTERIOR
@@ -145,23 +170,6 @@ class _AnimalScreenState extends State<AnimalScreen> {
                     disabledColor: Colors.grey,
                   ),
                 ), // FIM BOTAO PROXIMO
-                // ElevatedButton(
-                //   // botão proximo
-                //   style: ElevatedButton.styleFrom(
-                //     backgroundColor: Colors.white,
-                //   ),
-                //   onPressed: indiceAtual < (animais.length - 1)
-                //       ? () {
-                //           setState(() {
-                //             indiceAtual++;
-                //           });
-                //         }
-                //       : null,
-                //   child: const Text(
-                //     '▶', // icone botao proximo
-                //     style: TextStyle(fontSize: 35, color: Colors.pink),
-                //   ),
-                // ),
               ],
             ),
           ],
