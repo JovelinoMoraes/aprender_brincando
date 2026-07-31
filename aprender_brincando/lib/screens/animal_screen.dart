@@ -62,55 +62,106 @@ class _AnimalScreenState extends State<AnimalScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                ElevatedButton(
-                  // botão anterior
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
+                Container(
+                  //BOTAO ANTERIOR
+                  decoration: BoxDecoration(
+                    color: indiceAtual > 0
+                        ? Colors.pink[400]
+                        : Colors.grey[100],
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      const BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 8,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
                   ),
-                  onPressed: indiceAtual > 0
-                      ? () {
-                          setState(() {
-                            indiceAtual--;
-                          });
-                        }
-                      : null,
-                  child: const Text(
-                    '◀', // icone botão anterior
-                    style: TextStyle(fontSize: 35, color: Colors.pink),
+                  child: IconButton(
+                    onPressed: indiceAtual > 0
+                        ? () {
+                            setState(() {
+                              indiceAtual--;
+                            });
+                          }
+                        : null,
+                    icon: Icon(Icons.navigate_before_rounded),
+                    color: Colors.white,
+                    disabledColor: Colors.grey,
                   ),
-                ),
-                ElevatedButton(
-                  /// botão do som do animal
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
+                ), // FIM BOTAO ANTERIOR
+
+                Container(
+                  // BOTÂO DE SOM!
+                  decoration: BoxDecoration(
+                    color: Colors.pink[400],
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 8,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
                   ),
-                  onPressed: () {
-                    player.play(
-                      AssetSource(animalAtual.som),
-                    ); // ao clicar no botão a bliblitoca executa o audio
-                  },
-                  child: const Text(
-                    '🔊', // icone do botão do som
-                    style: TextStyle(fontSize: 35, color: Colors.pink),
+                  child: IconButton(
+                    onPressed: () {
+                      player.play(
+                        AssetSource(animalAtual.som),
+                      ); // ao clicar no botão a bliblitoca executa o audio
+                    },
+                    icon: const Icon(
+                      Icons.volume_up_rounded,
+                      color: Colors.white,
+                      size: 60,
+                    ),
                   ),
-                ), // botao de play audio
-                ElevatedButton(
-                  // botão proximo
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
+                ), // FIM BOTAO SOM
+                Container(
+                  //BOTAO PROXIMO
+                  decoration: BoxDecoration(
+                    color: indiceAtual < animais.length - 1
+                        ? Colors.pink[400]
+                        : Colors.grey[100],
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      const BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 8,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
                   ),
-                  onPressed: indiceAtual < (animais.length - 1)
-                      ? () {
-                          setState(() {
-                            indiceAtual++;
-                          });
-                        }
-                      : null,
-                  child: const Text(
-                    '▶', // icone botao proximo
-                    style: TextStyle(fontSize: 35, color: Colors.pink),
+                  child: IconButton(
+                    onPressed: indiceAtual < (animais.length - 1)
+                        ? () {
+                            setState(() {
+                              indiceAtual++;
+                            });
+                          }
+                        : null,
+                    icon: Icon(Icons.navigate_next_rounded),
+                    color: Colors.white,
+                    disabledColor: Colors.grey,
                   ),
-                ),
+                ), // FIM BOTAO PROXIMO
+                // ElevatedButton(
+                //   // botão proximo
+                //   style: ElevatedButton.styleFrom(
+                //     backgroundColor: Colors.white,
+                //   ),
+                //   onPressed: indiceAtual < (animais.length - 1)
+                //       ? () {
+                //           setState(() {
+                //             indiceAtual++;
+                //           });
+                //         }
+                //       : null,
+                //   child: const Text(
+                //     '▶', // icone botao proximo
+                //     style: TextStyle(fontSize: 35, color: Colors.pink),
+                //   ),
+                // ),
               ],
             ),
           ],
